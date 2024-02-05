@@ -1,21 +1,23 @@
+
 version: '3.1'
 services:
     redis:
         image: "redis:7-alpine"
         container_name: "redis_db"
-        restart: always
+#        restart: always
         ports:
             - "6379:6379"
         environment:
             - REDIS_PASSWORD=redis-password
             - REDIS_PORT=6379
-#            - REDIS_DATABASES=16
+            - REDIS_DATABASES=16
     mongo:
         image: "mongo:5"
         container_name: "mongo_db"
-        restart: always
+#        restart: always
         ports:
-            - "8081:8081"
+#            - "27017:27017"
+            - "27018:27018"
         volumes:
             - "./data/mongodb:/data/db"
         environment:
@@ -24,7 +26,7 @@ services:
     rabbitmq:
         image: "rabbitmq:3.12-management"
         container_name: "rabbitmq"
-        restart: always
+#        restart: always
         ports:
             - "15672:15672"
             - "5672:5672"
